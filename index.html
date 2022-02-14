@@ -41,26 +41,30 @@
             }
             return null;
         }
-        var hls, live, type, loader;
-        hls = getUrlParam("url");
-        if (!hls) {
+        var uri, live, type, loader;
+        uri = getUrlParam("url");
+        if (!uri) {
             var g = document.getElementById("player");
             g.innerHTML = "没有可以播放的链接。\n 使用方法：添加参数 ?url=*视频或直播链接*";
         }
-        if (hls.match("m3u", "m3u8")) {
+        if (uri.match(".m3u", ".m3u8")) {
             live = true;
             type = 'hls';
             loader = Hls;
-        } else {
+        } else if (uri.match(".flv")) {
             live = false;
-            type = 'flv';
-            loader = Flv;
+            type='flv';
+            loader = flvjs;
+        }
+        else {
+            live = false;
+            type = 'mp4';
+            loader = null;
         }
         var mp = new MuiPlayer({
             container: '#player',
-            title: hls,
-            src: hls,
-            loader: loader,
+            title: uri,
+            src: uri,
             themeColor: '#3CB371',
             initFullFixed: true,
             live: live,
