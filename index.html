@@ -45,7 +45,7 @@
         uri = getUrlParam("url");
         if (!uri) {
             var g = document.getElementById("player");
-            g.innerHTML = "没有可以播放的链接。\n 使用方法：添加参数 ?url=*视频或直播链接*";
+            g.innerHTML = "没有可以播放的链接。\n 使用方法：添加参数 ?url=*视频或直播链接* CORS解决：https://github.com/messier31/cors-proxy-server";
         }
         if (uri.match(".m3u", ".m3u8")) {
             live = true;
