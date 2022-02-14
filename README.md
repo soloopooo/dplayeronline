@@ -1,2 +1,2 @@
-# dplayeronline
-based on dplayer.
+# muiplayeronline
+based on muiplayer.
