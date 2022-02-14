@@ -41,8 +41,13 @@
             }
             return null;
         }
-        var hls;
+        var hls,live;
         hls = getUrlParam("url")
+        if (hls.match("m3u","m3u8")){
+            live = true;
+        }else{
+            live=false;
+        }
         var mp = new MuiPlayer({
             container: '#player',
             title: '演示视频',
@@ -50,6 +55,7 @@
             loop: true,
             themeColor: '#3CB371',
             initFullFixed: true,
+            live:live,
             plugins: [
                 new MuiPlayerDesktopPlugin({
                 })
